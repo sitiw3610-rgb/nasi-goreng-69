@@ -4,7 +4,7 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { ChevronLeft, ChevronRight, Upload, X } from "lucide-react";
 import heroSlide1 from "@/assets/hero-slide-1.jpg";
 import heroSlide2 from "@/assets/hero-slide-2.jpg";
-import heroSlide3 from "@/assets/hero-slide-3.jpg";
+import heroSlide3 from "@/assets/hero-slide-3.jpg.jpeg";
 
 const STORAGE_KEY = "nasgor69_hero_slides";
 
@@ -26,7 +26,7 @@ const loadSavedImages = (): (string | null)[] => {
   try {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) return JSON.parse(saved);
-  } catch {}
+  } catch { }
   return defaultSlides.map(() => null);
 };
 
@@ -239,9 +239,8 @@ const HeroSection = () => {
               <button
                 key={i}
                 onClick={() => setCurrent(i)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  i === current ? "bg-primary scale-125" : "bg-muted"
-                }`}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${i === current ? "bg-primary scale-125" : "bg-muted"
+                  }`}
               />
             ))}
           </div>
@@ -268,9 +267,8 @@ const HeroSection = () => {
                       <div key={i} className="relative group/thumb">
                         <button
                           onClick={() => { setCurrent(i); fileInputRef.current?.click(); }}
-                          className={`w-full aspect-square rounded-xl overflow-hidden border-2 transition-all duration-200 ${
-                            i === current ? "border-primary shadow-md" : "border-border hover:border-primary/50"
-                          }`}
+                          className={`w-full aspect-square rounded-xl overflow-hidden border-2 transition-all duration-200 ${i === current ? "border-primary shadow-md" : "border-border hover:border-primary/50"
+                            }`}
                         >
                           <img
                             src={customImages[i] || slide.img}
