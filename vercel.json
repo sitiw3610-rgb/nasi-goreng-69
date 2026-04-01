@@ -1,4 +1,10 @@
 {
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "/index.html"
+        }
+    ],
     "headers": [
         {
             "source": "/(.*)",
@@ -24,14 +30,6 @@
                     "value": "default-src 'self'; img-src 'self' data:;"
                 }
             ]
-        }
-    ]
-}
-{
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "/index.html"
         }
     ]
 }
