@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 24 82% 19%;
+
+    --card: 32 100% 85%;
+    --card-foreground: 24 82% 19%;
+
+    --popover: 32 100% 85%;
+    --popover-foreground: 24 82% 19%;
+
+    --primary: 28 75% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 34 99% 51%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 32 60% 75%;
+    --muted-foreground: 24 40% 35%;
+
+    --accent: 39 96% 68%;
+    --accent-foreground: 24 82% 19%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 28 50% 65%;
+    --input: 28 50% 65%;
+    --ring: 28 75% 50%;
+
+    --radius: 0.75rem;
+
+    --brand-main: 28 75% 50%;
+    --brand-accent: 34 99% 51%;
+    --brand-highlight: 39 96% 68%;
+    --brand-bg: 0 0% 100%;
+    --brand-dark: 24 82% 19%;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 24 82% 19%;
+    --sidebar-primary: 28 75% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 39 96% 68%;
+    --sidebar-accent-foreground: 24 82% 19%;
+    --sidebar-border: 28 50% 65%;
+    --sidebar-ring: 34 99% 51%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body;
+    overflow-x: hidden;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+  .font-body {
+    font-family: 'Poppins', sans-serif;
+  }
+  .glow-hover {
+    @apply transition-all duration-300 ease-in-out;
+  }
+  .glow-hover:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px hsl(34 99% 51% / 0.5);
+  }
+  .glass-nav {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    background: hsla(0, 0%, 100%, 0.85);
+  }
+  .gradient-footer {
+    background: hsl(32 100% 80%);
+  }
+  .text-gradient-brand {
+    background: linear-gradient(135deg, hsl(28 75% 50%), hsl(34 99% 51%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .pulse-btn {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  .ripple-btn {
+    position: relative;
+    overflow: hidden;
+  }
+  .ripple-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, hsl(39 96% 68% / 0.4) 0%, transparent 70%);
+    transform: scale(0);
+    transition: transform 0.5s ease;
+  }
+  .ripple-btn:hover::after {
+    transform: scale(2.5);
+  }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px hsl(34 99% 51% / 0.4); }
+  50% { box-shadow: 0 0 24px hsl(34 99% 51% / 0.8); }
+}
+
+@keyframes typewriter {
+  from { width: 0; }
+  to { width: 100%; }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent; }
+  50% { border-color: hsl(28 75% 50%); }
+}
+
+@keyframes glitch {
+  0%, 100% { text-shadow: 2px 0 hsl(34 99% 51%), -2px 0 hsl(28 75% 50%); }
+  25% { text-shadow: -2px 0 hsl(34 99% 51%), 2px 0 hsl(28 75% 50%); }
+  50% { text-shadow: 2px 2px hsl(34 99% 51%), -2px -2px hsl(28 75% 50%); }
+  75% { text-shadow: -2px 2px hsl(34 99% 51%), 2px -2px hsl(28 75% 50%); }
+}
+
+.glitch-text {
+  animation: glitch 1.5s infinite;
+}
+
+html {
+  scroll-behavior: smooth;
+}
