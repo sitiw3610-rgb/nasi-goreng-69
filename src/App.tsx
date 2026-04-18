@@ -7,7 +7,6 @@ import Beranda from "./pages/Beranda";
 import CeritaKami from "./pages/CeritaKami";
 import Menu from "./pages/Menu";
 import Outlet from "./pages/Outlet";
-import Review from "./pages/Review";
 import Promo from "./pages/Promo";
 import TentangKami from "./pages/TentangKami";
 import NotFound from "./pages/NotFound";
@@ -27,9 +26,8 @@ const App = () => (
           <Route path="/cerita-kami" element={<CeritaKami />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/outlet" element={<Outlet />} />
-          <Route path="/review" element={<Review />} />
           <Route path="/promo" element={<Promo />} />
-          <Route path="/tentang-kami" element={<TentangKami />} />
+          <Route path="/tentang-kami" element={<Navigate to="/cerita-kami" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         <FloatingButtons />

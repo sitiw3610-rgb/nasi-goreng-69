@@ -6,10 +6,8 @@ const navItems = [
   { label: "Beranda", href: "/beranda" },
   { label: "Cerita Kami", href: "/cerita-kami" },
   { label: "Menu", href: "/menu" },
-  { label: "Outlet Terdekat", href: "/outlet" },
-  { label: "Review", href: "/review" },
   { label: "Promo", href: "/promo" },
-  { label: "Tentang Kami", href: "/tentang-kami" },
+  { label: "Outlet Terdekat", href: "/outlet" },
 ];
 
 const Navbar = () => {

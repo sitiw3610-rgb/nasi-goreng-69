@@ -1,95 +1,195 @@
-import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { MapPin, Clock, Phone } from "lucide-react";
+import { useState, useMemo } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { MapPin, Search, Star, ArrowLeft, Phone, Clock, ExternalLink } from "lucide-react";
+import { outlets as allOutlets, cities, type Outlet } from "@/data/outlets";
 
-const outlets = [
-{ name: "Nasi Goreng 69 Madiun", city: "Madiun", hours: "10:00 - 22:00", address: "Jl. Pahlawan No. 38-40, Madiun", phone: "+62 812-3456-7890" },
-{ name: "Nasi Goreng 69 Surabaya", city: "Surabaya", hours: "10:00 - 23:00", address: "Jl. Pemuda No. 257, Surabaya", phone: "+62 823-3051-2769" },
-{ name: "Nasi Goreng 69 Malang", city: "Malang", hours: "10:00 - 22:00", address: "Jl. M. Haryono No. 195-197, Malang", phone: "+62 814-9903-1397" },
-{ name: "Nasi Goreng 69 Semarang", city: "Semarang", hours: "10:00 - 22:00", address: "Jl. Hassanudin No. 8, Semarang", phone: "+62 899-5899-449" }];
-
+function RatingBadge({ rating }: { rating: number | string }) {
+  return (
+    <span className="inline-flex items-center gap-1 bg-secondary/20 text-secondary-foreground text-xs font-semibold px-2 py-0.5 rounded-full">
+      <Star className="w-3 h-3 fill-secondary text-secondary" />
+      {typeof rating === "number" ? rating.toFixed(1) : rating}
+    </span>
+  );
+}
 
 const OutletSection = () => {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.2 });
+  const [selectedCity, setSelectedCity] = useState<string | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const scrollToMenu = (city: string) => {
-    const menuEl = document.getElementById("menu");
-    if (menuEl) menuEl.scrollIntoView({ behavior: "smooth" });
+  const filteredCities = useMemo(() => {
+    if (!searchQuery) return cities;
+    const q = searchQuery.toLowerCase();
+    return cities.filter(
+      (c) =>
+        c.name.toLowerCase().includes(q) ||
+        allOutlets.some(
+          (o) =>
+            o.city === c.name &&
+            (o.name.toLowerCase().includes(q) || o.address.toLowerCase().includes(q))
+        )
+    );
+  }, [searchQuery]);
+
+  const cityOutlets = useMemo(() => {
+    if (!selectedCity) return [];
+    let filtered = allOutlets.filter((o) => o.city === selectedCity);
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase();
+      filtered = filtered.filter(
+        (o) => o.name.toLowerCase().includes(q) || o.address.toLowerCase().includes(q)
+      );
+    }
+    return filtered.sort((a, b) => {
+      const ratingA = typeof a.rating === "number" ? a.rating : parseFloat(a.rating) || 0;
+      const ratingB = typeof b.rating === "number" ? b.rating : parseFloat(b.rating) || 0;
+      return ratingB - ratingA;
+    });
+  }, [selectedCity, searchQuery]);
+
+  const selectCity = (cityName: string) => {
+    setSelectedCity(cityName);
+    setSearchQuery("");
+  };
+
+  const goBack = () => {
+    setSelectedCity(null);
+    setSearchQuery("");
   };
 
   return (
-    <section id="outlet" className="py-20 md:py-28" ref={ref}>
-      <div className="container mx-auto px-4">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          className="text-3xl md:text-5xl font-display font-bold text-primary text-center mb-4">
-          
-          Outlet Terdekat
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.2 }}
-          className="text-center text-muted-foreground font-body mb-12">
-          
-          Klik untuk melihat lokasi terdekat dari anda       
-        </motion.p>
+    <section className="min-h-screen bg-background">
+      <div className="max-w-6xl mx-auto px-4 py-10">
+        {/* Header */}
+        <div className="mb-8 space-y-4">
+          <div className="flex items-center gap-3">
+            {selectedCity && (
+              <button
+                onClick={goBack}
+                className="p-2 rounded-full hover:bg-muted transition-colors"
+              >
+                <ArrowLeft className="w-5 h-5 text-foreground" />
+              </button>
+            )}
+            <div>
+              <h2 className="text-2xl md:text-3xl font-display font-bold text-primary">
+                {selectedCity ? selectedCity : "Outlet Terdekat"}
+              </h2>
+              <p className="text-sm text-muted-foreground font-body">
+                {selectedCity
+                  ? `${cityOutlets.length} outlet ditemukan`
+                  : "Pilih kota untuk melihat outlet"}
+              </p>
+            </div>
+          </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {outlets.map((o, i) =>
-          <motion.div
-            key={o.name}
-            initial={{ opacity: 0, y: 50 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ delay: i * 0.15, duration: 0.5 }}
-            whileHover={{ scale: 1.05, y: -5 }}
-            onClick={() => scrollToMenu(o.city)}
-            className="bg-card rounded-2xl p-6 shadow-lg glow-hover cursor-pointer group">
-            
-              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center mb-4 group-hover:shadow-lg transition-shadow">
-                <MapPin className="w-6 h-6 text-secondary-foreground" />
-              </div>
-              <h3 className="font-display font-bold text-foreground text-lg mb-1">{o.name}</h3>
-              <span className="inline-block bg-primary/10 text-primary text-xs font-body font-semibold px-2 py-0.5 rounded-full mb-3">{o.city}</span>
-              <div className="space-y-2 text-sm text-muted-foreground font-body">
-                <div className="flex items-center gap-2">
-                  <Clock className="w-4 h-4 text-secondary flex-shrink-0" />
-                  <span>{o.hours}</span>
-                </div>
-                <div className="flex items-start gap-2">
-                  <MapPin className="w-4 h-4 text-secondary flex-shrink-0 mt-0.5" />
-                  <span>{o.address}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-secondary flex-shrink-0" />
-                  <span>{o.phone}</span>
-                </div>
-              </div>
-            </motion.div>
-          )}
+          {/* Search */}
+          <div className="relative max-w-md">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+            <input
+              type="text"
+              placeholder="Cari kota atau outlet..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl border border-border bg-background text-sm font-body focus:outline-none focus:ring-2 focus:ring-primary/40 transition-all"
+            />
+          </div>
         </div>
 
-        {/* Map */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.6 }}
-          className="mt-12 rounded-2xl overflow-hidden shadow-xl h-64 md:h-80">
-          
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d253840.65295222744!2d106.68943050938976!3d-6.229386699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x5371bf0fdfe727d2!2sJakarta!5e0!3m2!1sid!2sid"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen
-            loading="lazy"
-            title="Lokasi Outlet" />
-          
-        </motion.div>
+        {/* Content */}
+        <AnimatePresence mode="wait">
+          {!selectedCity ? (
+            <motion.div
+              key="cities"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+            >
+              {filteredCities.map((city, i) => (
+                <motion.button
+                  key={city.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.05 }}
+                  whileHover={{ scale: 1.03, y: -2 }}
+                  whileTap={{ scale: 0.97 }}
+                  onClick={() => selectCity(city.name)}
+                  className="flex flex-col items-center gap-2 p-5 rounded-2xl bg-card border border-border/50 shadow-sm hover:shadow-md hover:border-primary/30 transition-all cursor-pointer group"
+                >
+                  <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                    <MapPin className="w-6 h-6 text-primary" />
+                  </div>
+                  <span className="font-display font-bold text-foreground text-sm">
+                    {city.name}
+                  </span>
+                  <span className="text-xs text-muted-foreground font-body">
+                    {city.outletCount} outlet
+                  </span>
+                </motion.button>
+              ))}
+            </motion.div>
+          ) : (
+            <motion.div
+              key="outlets"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
+            >
+              {cityOutlets.map((outlet, i) => (
+                <motion.div
+                  key={outlet.id}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.07 }}
+                  className="p-5 rounded-2xl border border-border/50 bg-card shadow-sm hover:shadow-md hover:border-primary/30 transition-all"
+                >
+                  <div className="flex items-start justify-between gap-2 mb-3">
+                    <h3 className="font-display font-bold text-foreground text-base leading-tight">
+                      {outlet.name}
+                    </h3>
+                    <RatingBadge rating={outlet.rating} />
+                  </div>
+                  <p className="text-sm text-muted-foreground font-body mb-2 flex items-start gap-1.5 whitespace-pre-line">
+                    <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
+                    {outlet.address}
+                  </p>
+                  {outlet.hours && (
+                    <p className="text-sm text-muted-foreground font-body mb-2 flex items-center gap-1.5">
+                      <Clock className="w-4 h-4 text-primary flex-shrink-0" />
+                      {outlet.hours}
+                    </p>
+                  )}
+                  {outlet.phone && (
+                    <p className="text-sm text-muted-foreground font-body mb-3 flex items-center gap-1.5">
+                      <Phone className="w-4 h-4 text-primary flex-shrink-0" />
+                      {outlet.phone}
+                    </p>
+                  )}
+                  <a
+                    href={outlet.googleMapsLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-sm font-body font-semibold text-primary hover:text-primary/80 transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Buka di Google Maps
+                  </a>
+                </motion.div>
+              ))}
+              {cityOutlets.length === 0 && (
+                <p className="text-center text-sm text-muted-foreground font-body py-8 col-span-full">
+                  Tidak ada outlet yang cocok.
+                </p>
+              )}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </section>);
-
+    </section>
+  );
 };
 
 export default OutletSection;
