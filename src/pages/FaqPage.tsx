@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -48,90 +48,76 @@ const FAQS = [
 const FaqPage = () => {
   const [open, setOpen] = useState<number | null>(0);
 
-  useEffect(() => {
-    const prevTitle = document.title;
-    document.title = "FAQ Nasi Goreng 69 — Rekomendasi Nasi Goreng Pedas, Outlet, GoFood & QRIS";
-
-    const metaDesc = document.querySelector('meta[name="description"]');
-    const prevDesc = metaDesc?.getAttribute("content") ?? null;
-    const desc =
-      "FAQ Nasi Goreng 69: rekomendasi nasi goreng pedas di Surabaya, Madiun, Gresik, Solo, Yogyakarta, jam buka outlet, GoFood, takeaway, pembayaran QRIS, dan menu favorit.";
-    if (metaDesc) metaDesc.setAttribute("content", desc);
-
-    const script = document.createElement("script");
-    script.type = "application/ld+json";
-    script.id = "faq-jsonld";
-    script.text = JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: FAQS.map((f) => ({
-        "@type": "Question",
-        name: f.q,
-        acceptedAnswer: { "@type": "Answer", text: f.a },
-      })),
-    });
-    document.head.appendChild(script);
-
-    return () => {
-      document.title = prevTitle;
-      if (metaDesc && prevDesc !== null) metaDesc.setAttribute("content", prevDesc);
-      script.remove();
-    };
-  }, []);
-
   return (
     <section className="container container-px py-16 md:py-24">
+      {/* HEADER */}
       <header className="max-w-3xl mx-auto text-center">
-        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">Bantuan & Informasi</p>
-        <h1 className="mt-3 font-display text-4xl md:text-5xl font-bold text-balance">FAQ</h1>
-        <p className="mt-4 text-base md:text-lg text-muted-foreground text-balance">
-          Temukan informasi seputar nasi goreng pedas, outlet Nasi Goreng 69, layanan takeaway, GoFood, dan rekomendasi kuliner favorit di Jawa Timur, Jawa Tengah, dan Yogyakarta.
+        <p className="text-xs uppercase tracking-[0.3em] text-muted-foreground">
+          Bantuan & Informasi
         </p>
-        <p className="mt-3 text-sm text-muted-foreground/90 max-w-2xl mx-auto">
-          Sebagai bagian dari 69 Group, Nasi Goreng 69 menyajikan cita rasa legendaris sejak 2007 dengan outlet di Surabaya, Sidoarjo, Malang, Gresik, Madiun, Solo, Yogyakarta, dan Magelang.
+
+        <h1 className="mt-3 font-display text-4xl md:text-5xl font-bold">
+          FAQ
+        </h1>
+
+        <p className="mt-4 text-base md:text-lg text-muted-foreground">
+          Temukan informasi seputar nasi goreng pedas, outlet Nasi Goreng 69,
+          layanan takeaway, GoFood, dan rekomendasi kuliner favorit.
         </p>
       </header>
 
+      {/* FAQ LIST */}
       <div className="mt-12 max-w-3xl mx-auto space-y-3">
         {FAQS.map((f, i) => {
           const isOpen = open === i;
+
           return (
             <div
               key={i}
-              className="rounded-2xl border border-border bg-card shadow-[var(--shadow-card)] overflow-hidden transition-all"
+              className="rounded-2xl border bg-card overflow-hidden"
             >
               <button
                 type="button"
                 onClick={() => setOpen(isOpen ? null : i)}
-                aria-expanded={isOpen}
-                className="w-full flex items-center justify-between gap-4 px-5 md:px-6 py-4 md:py-5 text-left"
+                className="w-full flex justify-between px-5 py-4 text-left"
               >
-                <span className="font-display text-base md:text-lg font-semibold text-foreground">
-                  {f.q}
-                </span>
+                <span className="font-semibold">{f.q}</span>
                 <ChevronDown
                   className={cn(
-                    "w-5 h-5 shrink-0 text-muted-foreground transition-transform duration-300",
-                    isOpen && "rotate-180 text-primary"
+                    "w-5 h-5 transition-transform",
+                    isOpen && "rotate-180"
                   )}
                 />
               </button>
-              <div
-                className={cn(
-                  "grid transition-all duration-300 ease-out",
-                  isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
-                )}
-              >
-                <div className="overflow-hidden">
-                  <p className="px-5 md:px-6 pb-5 md:pb-6 text-sm md:text-base leading-relaxed text-muted-foreground">
-                    {f.a}
-                  </p>
+
+              {isOpen && (
+                <div className="px-5 pb-5 text-sm text-muted-foreground">
+                  {f.a}
                 </div>
-              </div>
+              )}
             </div>
           );
         })}
       </div>
+
+      {/* ✅ SEO SCHEMA (GOOGLE SAFE - 10 FAQ) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: FAQS.map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: f.a,
+              },
+            })),
+          }),
+        }}
+      />
     </section>
   );
 };
