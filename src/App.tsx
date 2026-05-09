@@ -1,16 +1,16 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Beranda from "./pages/Beranda";
-import CeritaKami from "./pages/CeritaKami";
-import Menu from "./pages/Menu";
-import Outlet from "./pages/Outlet";
-import Promo from "./pages/Promo";
-import TentangKami from "./pages/TentangKami";
-import NotFound from "./pages/NotFound";
-import FloatingButtons from "./components/FloatingButtons";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/toaster";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { Layout } from "@/components/Layout";
+import Index from "./pages/Index.tsx";
+import AboutPage from "./pages/AboutPage.tsx";
+import MenuPage from "./pages/MenuPage.tsx";
+import PromoPage from "./pages/PromoPage.tsx";
+import OutletPage from "./pages/OutletPage.tsx";
+import FaqPage from "./pages/FaqPage.tsx";
+import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
 
@@ -21,16 +21,17 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigate to="/beranda" replace />} />
-          <Route path="/beranda" element={<Beranda />} />
-          <Route path="/cerita-kami" element={<CeritaKami />} />
-          <Route path="/menu" element={<Menu />} />
-          <Route path="/outlet" element={<Outlet />} />
-          <Route path="/promo" element={<Promo />} />
-          <Route path="/tentang-kami" element={<Navigate to="/cerita-kami" replace />} />
+          <Route element={<Layout />}>
+            <Route path="/" element={<Index />} />
+            <Route path="/tentang" element={<AboutPage />} />
+            <Route path="/menu" element={<MenuPage />} />
+            <Route path="/promo" element={<PromoPage />} />
+            <Route path="/outlet" element={<OutletPage />} />
+            <Route path="/faq" element={<FaqPage />} />
+          </Route>
+          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
-        <FloatingButtons />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

@@ -7,15 +7,13 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
-      },
+      padding: "1.5rem",
+      screens: { "2xl": "1320px" },
     },
     extend: {
       fontFamily: {
-        display: ["Playfair Display", "serif"],
-        body: ["Poppins", "sans-serif"],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['"Playfair Display"', 'Georgia', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -23,6 +21,13 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        brand: {
+          DEFAULT: "hsl(var(--brand))",
+          foreground: "hsl(var(--brand-foreground))",
+          soft: "hsl(var(--brand-soft))",
+          "soft-foreground": "hsl(var(--brand-soft-foreground))",
+          cream: "hsl(var(--brand-cream))",
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
@@ -51,69 +56,29 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        brand: {
-          main: "hsl(var(--brand-main))",
-          accent: "hsl(var(--brand-accent))",
-          highlight: "hsl(var(--brand-highlight))",
-          bg: "hsl(var(--brand-bg))",
-          dark: "hsl(var(--brand-dark))",
-        },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
+      },
+      backgroundImage: {
+        'gradient-warm': 'var(--gradient-warm)',
+        'gradient-brand': 'var(--gradient-brand)',
+        'gradient-hero': 'var(--gradient-hero)',
+      },
+      boxShadow: {
+        soft: 'var(--shadow-soft)',
+        card: 'var(--shadow-card)',
+        glow: 'var(--shadow-glow)',
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 4px)",
+        sm: "calc(var(--radius) - 8px)",
       },
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
-        "fade-in-up": {
-          "0%": { opacity: "0", transform: "translateY(30px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        "slide-in-left": {
-          "0%": { opacity: "0", transform: "translateX(-50px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        "slide-in-right": {
-          "0%": { opacity: "0", transform: "translateX(50px)" },
-          "100%": { opacity: "1", transform: "translateX(0)" },
-        },
-        "bounce-in": {
-          "0%": { transform: "scale(0.3)", opacity: "0" },
-          "50%": { transform: "scale(1.05)" },
-          "70%": { transform: "scale(0.9)" },
-          "100%": { transform: "scale(1)", opacity: "1" },
-        },
-        "float": {
-          "0%, 100%": { transform: "translateY(0px)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
+        "accordion-down": { from: { height: "0" }, to: { height: "var(--radix-accordion-content-height)" } },
+        "accordion-up": { from: { height: "var(--radix-accordion-content-height)" }, to: { height: "0" } },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-in-up": "fade-in-up 0.6s ease-out forwards",
-        "slide-in-left": "slide-in-left 0.6s ease-out forwards",
-        "slide-in-right": "slide-in-right 0.6s ease-out forwards",
-        "bounce-in": "bounce-in 0.6s ease-out forwards",
-        "float": "float 3s ease-in-out infinite",
       },
     },
   },
