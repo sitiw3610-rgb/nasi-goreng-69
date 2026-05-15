@@ -60,6 +60,64 @@ export const translations = {
       qty: "Jumlah",
       remove: "Hapus",
     },
+    faq: {
+      label: "Bantuan & Informasi",
+      title: "FAQ",
+      subtitle:
+        "Temukan informasi seputar nasi goreng pedas, outlet Nasi Goreng 69, layanan takeaway, GoFood, dan rekomendasi kuliner favorit.",
+
+      items: [
+        {
+          q: "Rekomendasi nasi goreng pedas enak di Surabaya?",
+          a: "Salah satu rekomendasi nasi goreng pedas enak di Surabaya adalah Nasi Goreng 69 dengan berbagai level pedas, menu favorit pelanggan, dan banyak outlet di pusat perbelanjaan Surabaya seperti Tunjungan Plaza, Royal Plaza, Grand City, hingga CITO Mall.",
+        },
+
+        {
+          q: "Nasi Goreng 69 buka jam berapa?",
+          a: "Seluruh outlet Nasi Goreng 69 buka setiap hari pukul 10.00–21.00 WIB. Pelanggan dapat datang langsung ke outlet atau melakukan checkout pickup melalui website.",
+        },
+
+        {
+          q: "Apakah Nasi Goreng 69 tersedia di GoFood?",
+          a: "Ya, Nasi Goreng 69 tersedia di GoFood untuk beberapa outlet di Jawa Timur, Jawa Tengah, dan Yogyakarta sehingga pelanggan dapat lebih mudah memesan nasi goreng favorit secara online.",
+        },
+
+        {
+          q: "Apakah bisa pesan takeaway di Nasi Goreng 69?",
+          a: "Bisa. Pelanggan dapat melakukan pickup langsung melalui sistem checkout website untuk mempermudah pemesanan takeaway tanpa antre.",
+        },
+
+        {
+          q: "Apa menu favorit di Nasi Goreng 69?",
+          a: "Menu favorit pelanggan di Nasi Goreng 69 antara lain Nasi Goreng Spesial 69, Mie Goreng 69, Mie Hotplate Sapi Lada Hitam, Nasi Goreng Jawa, dan Mie Goreng Pedas dengan cita rasa khas dan level pedas favorit pelanggan.",
+        },
+
+        {
+          q: "Apakah Nasi Goreng 69 punya banyak cabang?",
+          a: "Ya, Nasi Goreng 69 memiliki banyak outlet di berbagai kota seperti Surabaya, Malang, Sidoarjo, Gresik, Madiun, Solo, Yogyakarta, dan Magelang.",
+        },
+
+        {
+          q: "Rekomendasi kuliner pedas di Madiun?",
+          a: "Salah satu rekomendasi kuliner pedas di Madiun adalah Nasi Goreng 69 Plaza Madiun dengan pilihan menu nasi goreng pedas favorit dan level sambal yang dapat disesuaikan.",
+        },
+
+        {
+          q: "Tempat makan nasi goreng enak di Gresik?",
+          a: "Nasi Goreng 69 menjadi salah satu pilihan tempat makan nasi goreng enak di Gresik dengan outlet di Icon Mall Gresik dan Gress Mall.",
+        },
+
+        {
+          q: "Apakah tersedia pembayaran QRIS?",
+          a: "Ya, Nasi Goreng 69 mendukung pembayaran QRIS serta pembayaran langsung di outlet untuk memberikan kemudahan transaksi kepada pelanggan.",
+        },
+
+        {
+          q: "Apakah bisa order lewat website?",
+          a: "Ya, pelanggan dapat melakukan checkout pickup langsung melalui website atau redirect ke GoFood sesuai outlet pilihan agar proses pemesanan menjadi lebih praktis.",
+        },
+      ],
+    },
     footer: {
       tagline: "Sajian nasi goreng spesial yang dimasak dengan bahan berkualitas untuk menghadirkan rasa yang selalu fresh dan lezat setiap hari.",
       contact: "Kontak",
@@ -127,6 +185,64 @@ export const translations = {
       checkout: "Order via WhatsApp",
       qty: "Qty",
       remove: "Remove",
+    },
+    faq: {
+      label: "Help & Information",
+      title: "FAQ",
+      subtitle:
+        "Find information about spicy fried rice, Nasi Goreng 69 outlets, takeaway services, GoFood, and favorite culinary recommendations.",
+
+      items: [
+        {
+          q: "Where can I find delicious spicy fried rice in Surabaya?",
+          a: "One of the recommended spicy fried rice restaurants in Surabaya is Nasi Goreng 69 with various spice levels, favorite menu choices, and many outlets in shopping centers such as Tunjungan Plaza, Royal Plaza, Grand City, and CITO Mall.",
+        },
+
+        {
+          q: "What time does Nasi Goreng 69 open?",
+          a: "All Nasi Goreng 69 outlets are open daily from 10 AM to 9 PM. Customers can dine in directly or place takeaway pickup orders through the website.",
+        },
+
+        {
+          q: "Is Nasi Goreng 69 available on GoFood?",
+          a: "Yes, Nasi Goreng 69 is available on GoFood for several outlets across East Java, Central Java, and Yogyakarta, making it easier for customers to order online.",
+        },
+
+        {
+          q: "Can I order takeaway at Nasi Goreng 69?",
+          a: "Yes. Customers can place takeaway pickup orders directly through the website checkout system for a faster ordering experience.",
+        },
+
+        {
+          q: "What are the favorite menu items at Nasi Goreng 69?",
+          a: "Popular menu items include Nasi Goreng Spesial 69, Mie Goreng 69, Black Pepper Beef Hotplate Noodles, Javanese Fried Rice, and Spicy Fried Noodles.",
+        },
+
+        {
+          q: "Does Nasi Goreng 69 have many branches?",
+          a: "Yes, Nasi Goreng 69 has many outlets in cities such as Surabaya, Malang, Sidoarjo, Gresik, Madiun, Solo, Yogyakarta, and Magelang.",
+        },
+
+        {
+          q: "Any recommendations for spicy culinary food in Madiun?",
+          a: "One recommended spicy culinary destination in Madiun is Nasi Goreng 69 Plaza Madiun with customizable spice levels and favorite fried rice menus.",
+        },
+
+        {
+          q: "Where can I find delicious fried rice in Gresik?",
+          a: "Nasi Goreng 69 is one of the popular fried rice restaurants in Gresik with outlets located at Icon Mall Gresik and Gress Mall.",
+        },
+
+        {
+          q: "Is QRIS payment available?",
+          a: "Yes, Nasi Goreng 69 supports QRIS payments as well as direct payments at the outlet for customer convenience.",
+        },
+
+        {
+          q: "Can I order through the website?",
+          a: "Yes, customers can place pickup checkout orders directly through the website or get redirected to GoFood depending on the selected outlet.",
+        },
+      ],
     },
     footer: {
       tagline: "Part of 69 Group — a professionally managed restaurant with consistent SOP and quality across every outlet.",
