@@ -1,20 +1,16 @@
 import heroVideo from "@/assets/hero-nasgor.mp4";
 import { useLang } from "@/i18n/LanguageContext";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Flame } from "lucide-react";
+import { Flame } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import { WA_NUMBER } from "@/lib/whatsapp";
 
 export const HeroSection = () => {
   const { t } = useLang();
   const navigate = useNavigate();
-  const waHref = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(
-    "Halo Nasi Goreng 69, saya ingin memesan."
-  )}`;
-  const openWA = () => window.open(waHref, "_blank", "noopener,noreferrer");
 
   return (
     <section id="beranda" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      {/* Background Video */}
       <video
         src={heroVideo}
         autoPlay
@@ -27,31 +23,45 @@ export const HeroSection = () => {
 
       <div className="relative container container-px py-16 md:py-24">
         <div className="max-w-2xl text-white animate-fade-up">
+
+          {/* Tag */}
           <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/15 backdrop-blur border border-white/30 text-xs uppercase tracking-[0.2em] font-medium">
             <Flame className="w-3.5 h-3.5" />
             {t.hero.tag}
           </span>
+
+          {/* Title */}
           <h1 className="mt-6 font-display text-5xl md:text-7xl font-bold leading-[1.05] text-balance">
             {t.hero.title}
           </h1>
-          <p className="mt-6 text-lg md:text-xl text-white/85 max-w-xl leading-relaxed">{t.hero.subtitle}</p>
+
+          {/* Subtitle */}
+          <p className="mt-6 text-lg md:text-xl text-white/85 max-w-xl leading-relaxed">
+            {t.hero.subtitle}
+          </p>
+
+          {/* CTA Buttons */}
           <div className="mt-10 flex flex-wrap gap-4">
-            <Button
-              onClick={openWA}
-              size="lg"
-              className="bg-brand-soft hover:bg-brand-soft/90 text-brand-soft-foreground rounded-full px-7 h-13 text-base font-semibold shadow-glow group"
-            >
-              {t.hero.cta}
-              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Button>
+
+            {/* MENU BUTTON */}
             <Button
               onClick={() => navigate("/menu")}
+              size="lg"
+              className="bg-brand-soft hover:bg-brand-soft/90 text-brand-soft-foreground rounded-full px-7 h-13 text-base font-semibold shadow-glow"
+            >
+              {t.hero.cta}
+            </Button>
+
+            {/* PROMO BUTTON */}
+            <Button
+              onClick={() => navigate("/promo")}
               size="lg"
               variant="outline"
               className="rounded-full px-7 h-13 text-base font-semibold bg-transparent border-white/60 text-white hover:bg-white hover:text-brand"
             >
               {t.hero.ctaSecondary}
             </Button>
+
           </div>
         </div>
       </div>

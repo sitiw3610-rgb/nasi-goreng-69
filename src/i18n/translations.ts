@@ -7,8 +7,9 @@ export const translations = {
       tag: "SEJAK 2007 · 69 GROUP",
       title: "Nasi Goreng 69 — Cita Rasa Legendaris dari Jawa Timur",
       subtitle: "Restoran yang dikelola secara profesional dengan standar mutu konsisten di setiap outlet. Pesan mudah lewat WhatsApp.",
-      cta: "Pesan Sekarang",
-      ctaSecondary: "Lihat Menu",
+      cta: "Lihat Menu",
+      ctaSecondary: "Lihat Promo",
+
     },
     about: {
       label: "Tentang Kami",
@@ -133,8 +134,8 @@ export const translations = {
       tag: "SEJAK 2007 · 69 GROUP",
       title: "Nasi Goreng 69 — Legendary Flavor from East Java",
       subtitle: "A professionally managed restaurant with consistent quality across every outlet. Easy to order via WhatsApp.",
-      cta: "Order Now",
-      ctaSecondary: "View Menu",
+      cta: "View Menu",
+      ctaSecondary: "View Promo",
     },
     about: {
       label: "About Us",
