@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -25,7 +25,7 @@ const FAQS = [
   },
   {
     q: "Apakah Nasi Goreng 69 punya banyak cabang?",
-    a: "Ya, Nasi Goreng 69 memiliki banyak outlet di berbagai kota seperti Surabaya, Malang, Sidoarjo, Gresik, Madiun, Solo, Yogyakarta, dan Magelang dengan lokasi strategis di mall dan pusat kuliner seperti Tunjungan Plaza, WTC Surabaya, Grand City, Royal Plaza, CITO Mall, Food Junction Tandes, Trans Icon Surabaya, Plaza Madiun, Icon Mall Gresik, Gress Mall, Hartono Mall Solo, Hartono Mall Yogyakarta, Sleman City Hall, dan Grand Artos Magelang.",
+    a: "Ya, Nasi Goreng 69 memiliki banyak outlet di berbagai kota seperti Surabaya, Malang, Sidoarjo, Gresik, Madiun, Solo, Yogyakarta, dan Magelang.",
   },
   {
     q: "Rekomendasi kuliner pedas di Madiun?",
@@ -33,7 +33,7 @@ const FAQS = [
   },
   {
     q: "Tempat makan nasi goreng enak di Gresik?",
-    a: "Nasi Goreng 69 menjadi salah satu pilihan tempat makan nasi goreng enak di Gresik dengan outlet di Icon Mall Gresik dan Gress Mall yang populer di kalangan pecinta kuliner pedas.",
+    a: "Nasi Goreng 69 menjadi salah satu pilihan tempat makan nasi goreng enak di Gresik dengan outlet di Icon Mall Gresik dan Gress Mall.",
   },
   {
     q: "Apakah tersedia pembayaran QRIS?",
@@ -47,6 +47,13 @@ const FAQS = [
 
 const FaqPage = () => {
   const [open, setOpen] = useState<number | null>(0);
+
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []);
 
   return (
     <section className="container container-px py-16 md:py-24">
@@ -82,25 +89,35 @@ const FaqPage = () => {
                 className="w-full flex justify-between px-5 py-4 text-left"
               >
                 <span className="font-semibold">{f.q}</span>
+
                 <ChevronDown
                   className={cn(
-                    "w-5 h-5 transition-transform",
+                    "w-5 h-5 transition-transform duration-300",
                     isOpen && "rotate-180"
                   )}
                 />
               </button>
 
-              {isOpen && (
-                <div className="px-5 pb-5 text-sm text-muted-foreground">
-                  {f.a}
+              <div
+                className={cn(
+                  "grid transition-all duration-300 ease-in-out",
+                  isOpen
+                    ? "grid-rows-[1fr] opacity-100"
+                    : "grid-rows-[0fr] opacity-0"
+                )}
+              >
+                <div className="overflow-hidden">
+                  <div className="px-5 pb-5 text-sm text-muted-foreground">
+                    {f.a}
+                  </div>
                 </div>
-              )}
+              </div>
             </div>
           );
         })}
       </div>
 
-      {/* ✅ SEO SCHEMA (GOOGLE SAFE - 10 FAQ) */}
+      {/* FAQ SCHEMA */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
