@@ -210,8 +210,8 @@ export const CartSheet = () => {
             <button
               onClick={() => setMethod("gofood")}
               className={`w-full text-left p-5 rounded-2xl border-2 transition-all group ${method === "gofood"
-                  ? "border-brand bg-brand/5"
-                  : "border-border hover:border-brand hover:bg-brand/5"
+                ? "border-brand bg-brand/5"
+                : "border-border hover:border-brand hover:bg-brand/5"
                 }`}
             >
               <div className="flex items-center gap-4">
@@ -443,8 +443,8 @@ export const CartSheet = () => {
                     type="button"
                     onClick={() => setPay("cod")}
                     className={`p-3 rounded-xl border-2 text-sm font-semibold transition ${pay === "cod"
-                        ? "border-brand bg-brand/5 text-brand"
-                        : "border-border hover:border-brand/50"
+                      ? "border-brand bg-brand/5 text-brand"
+                      : "border-border hover:border-brand/50"
                       }`}
                   >
                     Cash (COD)
@@ -453,8 +453,8 @@ export const CartSheet = () => {
                     type="button"
                     onClick={() => setPay("qris")}
                     className={`p-3 rounded-xl border-2 text-sm font-semibold transition ${pay === "qris"
-                        ? "border-brand bg-brand/5 text-brand"
-                        : "border-border hover:border-brand/50"
+                      ? "border-brand bg-brand/5 text-brand"
+                      : "border-border hover:border-brand/50"
                       }`}
                   >
                     QRIS
@@ -487,7 +487,9 @@ export const CartSheet = () => {
             <div className="flex-1 overflow-y-auto px-6 py-5 space-y-4">
               <div className="flex items-center justify-between p-4 rounded-xl bg-brand-cream/40 border border-border">
                 <span className="text-sm text-muted-foreground">Total Pembayaran</span>
-                <span className="font-display text-xl font-bold text-brand">{formatRp(total)}</span>
+                <span className="font-display text-xl font-bold text-brand">
+                  {formatRp(total)}
+                </span>
               </div>
 
               {pay === "cod" ? (
@@ -503,13 +505,19 @@ export const CartSheet = () => {
                 </div>
               ) : (
                 <div className="space-y-4">
-                  <div className="aspect-square max-w-[260px] mx-auto bg-white border-2 border-border rounded-2xl p-4 grid place-items-center">
-                    <img
-                      src="/assets/qris.png"
-                      alt="QRIS Nasi Goreng 69"
-                      className="w-full h-full object-contain"
-                    />
+                  <div className="space-y-4 text-center">
+                    <h3 className="font-semibold text-lg">QRIS (di Outlet)</h3>
+
+                    <p className="text-sm text-muted-foreground">
+                      Bayar di kasir dengan salah satu cara:
+                    </p>
+
+                    <ul className="text-sm text-muted-foreground space-y-1">
+                      <li>• Scan QRIS kasir</li>
+                      <li>• Tunjukkan QRIS Anda untuk discan kasir</li>
+                    </ul>
                   </div>
+
                   <Button
                     type="button"
                     variant="outline"
@@ -519,16 +527,11 @@ export const CartSheet = () => {
                     {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                     Salin Nominal ({formatRp(total)})
                   </Button>
-                  <ol className="text-xs text-muted-foreground space-y-1 list-decimal pl-4">
-                    <li>Scan QR di atas dengan aplikasi e-wallet/m-banking</li>
-                    <li>Bayar sesuai nominal total</li>
-                    <li>Simpan bukti pembayaran</li>
-                    <li>Ambil pesanan di outlet yang dipilih</li>
-                  </ol>
                 </div>
               )}
             </div>
 
+            {/* FOOTER BUTTON */}
             <div className="border-t border-border px-6 py-5 bg-brand-cream/30 flex gap-2">
               <Button
                 variant="outline"
@@ -537,6 +540,7 @@ export const CartSheet = () => {
               >
                 <ArrowLeft className="w-4 h-4" />
               </Button>
+
               <Button
                 onClick={confirmPayment}
                 className="flex-1 bg-brand hover:bg-brand/90 text-brand-foreground h-12 rounded-full text-base font-semibold shadow-soft"
