@@ -60,6 +60,53 @@ export const translations = {
       checkout: "Pesan via WhatsApp",
       qty: "Jumlah",
       remove: "Hapus",
+      methodTitle: "Pilih metode pemesanan",
+      pickup: {
+        title: "Ambil di Outlet",
+        desc: "Pesan & ambil langsung di outlet pilihan Anda",
+      },
+      gofood: {
+        title: "Pesan via GoFood",
+        desc: "Diantar ke lokasi Anda lewat GoFood",
+        selectOutlet: "Pilih Outlet GoFood",
+        open: "Buka GoFood",
+      },
+      form: {
+        name: "Nama Pemesan",
+        outlet: "Pilih Outlet",
+        note: "Catatan (opsional)",
+        payment: "Metode Pembayaran",
+        cod: "Cash (COD)",
+        qris: "QRIS",
+        next: "Lanjut ke Pembayaran",
+      },
+      payment: {
+        total: "Total Pembayaran",
+        codTitle: "Bayar di Outlet",
+        codDesc: "Datang ke outlet dan bayar saat ambil pesanan.",
+        copy: "Salin Nominal",
+        qrisSteps: [
+          "Scan QR dengan e-wallet/m-banking",
+          "Bayar sesuai nominal",
+          "Simpan bukti pembayaran",
+          "Ambil di outlet",
+        ],
+        confirm: "Konfirmasi Pesanan",
+        paid: "Saya Sudah Bayar",
+      },
+      success: {
+        title: "Pesanan Diterima!",
+        desc: "Terima kasih, {name}. Kirim detail ke WhatsApp kami.",
+        send: "Kirim Detail ke WhatsApp",
+        status: "Status",
+        codStatus: "👉 Bayar di outlet",
+        qrisStatus: "👉 Menunggu verifikasi pembayaran",
+        qrisHint: "Kirim bukti pembayaran via WhatsApp.",
+      },
+    },
+    system: {
+      checkoutDescription:
+        "Website dilengkapi sistem keranjang dan checkout yang lebih interaktif. Saat tombol tambah (+) pada halaman Menu maupun Promo diklik, produk akan otomatis masuk ke dalam keranjang. Keranjang memiliki dua metode pemesanan yaitu “Ambil di Outlet” dan “Pesan via GoFood”. Jika pengguna memilih “Ambil di Outlet”, maka pengguna akan melalui tahapan Cart → Form → Pembayaran → Sukses. Setelah pembayaran berhasil dilakukan, detail pembayaran akan otomatis dikirim menuju WhatsApp resmi Nasi Goreng 69. Sementara itu, jika pengguna memilih “Pesan via GoFood”, sistem akan menampilkan dropdown seluruh outlet dan pengguna akan langsung diarahkan menuju halaman GoFood outlet terkait.",
     },
     faq: {
       label: "Bantuan & Informasi",
@@ -118,6 +165,9 @@ export const translations = {
           a: "Ya, pelanggan dapat melakukan checkout pickup langsung melalui website atau redirect ke GoFood sesuai outlet pilihan agar proses pemesanan menjadi lebih praktis.",
         },
       ],
+    },
+    floating: {
+      chat: "Chat Kami",
     },
     footer: {
       tagline: "Sajian nasi goreng spesial yang dimasak dengan bahan berkualitas untuk menghadirkan rasa yang selalu fresh dan lezat setiap hari.",
@@ -181,11 +231,63 @@ export const translations = {
     },
     cart: {
       title: "Your Cart",
-      empty: "Your cart is empty. Pick a favorite!",
+      empty: "Your cart is empty. Pick your favorite menu!",
       total: "Total",
       checkout: "Order via WhatsApp",
       qty: "Qty",
       remove: "Remove",
+      methodTitle: "Select order method",
+
+      pickup: {
+        title: "Pick Up at Outlet",
+        desc: "Order and pick up directly at your selected outlet",
+      },
+
+      gofood: {
+        title: "Order via GoFood",
+        desc: "Delivered to your location via GoFood",
+        selectOutlet: "Select GoFood Outlet",
+        open: "Open GoFood",
+      },
+
+      form: {
+        name: "Customer Name",
+        outlet: "Select Outlet",
+        note: "Notes (optional)",
+        payment: "Payment Method",
+        cod: "Cash (COD)",
+        qris: "QRIS",
+        next: "Proceed to Payment",
+      },
+
+      payment: {
+        total: "Payment Total",
+        codTitle: "Pay at Outlet",
+        codDesc: "Visit the outlet and pay when picking up your order.",
+        copy: "Copy Amount",
+        qrisSteps: [
+          "Scan QR using e-wallet or mobile banking",
+          "Pay the exact amount",
+          "Save your payment proof",
+          "Pick up your order at the outlet",
+        ],
+        confirm: "Confirm Order",
+        paid: "I Have Paid",
+      },
+
+      success: {
+        title: "Order Received!",
+        desc: "Thank you, {name}. Please send order details to our WhatsApp.",
+        send: "Send Details to WhatsApp",
+        status: "Status",
+        codStatus: "👉 Pay at outlet",
+        qrisStatus: "👉 Waiting for payment verification",
+        qrisHint: "Send payment proof via WhatsApp.",
+      },
+    },
+    system: {
+      checkoutDescription:
+        "The website includes an interactive cart and checkout system. When the (+) button is clicked on Menu or Promo pages, items are automatically added to the cart. The cart has two ordering methods: “Pick Up at Outlet” and “Order via GoFood”. If the user selects Pick Up, the flow will be Cart → Form → Payment → Success. After successful payment, order details are automatically sent to the official Nasi Goreng 69 WhatsApp. If the user selects GoFood, the system shows a dropdown of all outlets and redirects the user to the selected GoFood outlet page.",
     },
     faq: {
       label: "Help & Information",
@@ -244,6 +346,9 @@ export const translations = {
           a: "Yes, customers can place pickup checkout orders directly through the website or get redirected to GoFood depending on the selected outlet.",
         },
       ],
+    },
+    floating: {
+      chat: "Chat Us",
     },
     footer: {
       tagline: "Part of 69 Group — a professionally managed restaurant with consistent SOP and quality across every outlet.",

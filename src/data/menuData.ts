@@ -23,7 +23,7 @@ import imgMiegor69 from "@/assets/menu-mie-goreng.jpg";
 import imgMiegorSpesial from "@/assets/menu-mie-goreng.jpg";
 import imgMiegorAyam from "@/assets/menu-mie-goreng.jpg";
 // imgMiegorPedas removed as it is now a remote URL
-import imgMiegorSeafood from "@/assets/menu-mie-goreng.jpg";
+import imgMiegorSeafood from "@/assets/miegor-seafood.jpg";
 // imgMieCapcay removed as it is now a remote URL
 // imgTammieCapcay removed as it is now a remote URL
 import imgKwetiauGoreng from "@/assets/menu-mie-goreng.jpg";
@@ -98,7 +98,7 @@ export const menuItems: MenuItem[] = [
   { id: "miegor-spesial", name: { id: "Mie Goreng Spesial", en: "Special Fried Noodle" }, desc: ngDesc("Mie goreng with topping lengkap dan telur mata sapi.", "Fully loaded fried noodles topped with a sunny-side egg."), price: 53571, image: "https://nasigoreng69.com/wp-content/uploads/2022/07/miegor-special-1030x687.jpg", category: "mie-goreng" },
   { id: "miegor-ayam", name: { id: "Mie Goreng Ayam", en: "Chicken Fried Noodle" }, desc: ngDesc("Mie kenyal dengan ayam suwir dan sayuran segar.", "Springy noodles with shredded chicken and fresh veg."), price: 45238, image: "https://nasigoreng69.com/wp-content/uploads/2022/07/miegor-ayam-1030x687.jpg", category: "mie-goreng" },
   { id: "miegor-pedas", name: { id: "Mie Goreng Pedas", en: "Spicy Fried Noodle" }, desc: ngDesc("Mie goreng dengan level pedas menggugah.", "Fried noodles with a fiery spicy kick."), price: 45833, image: "https://nasigoreng69.com/wp-content/uploads/2022/07/miegor-mercon-1030x687.jpg", category: "mie-goreng", badge: { id: "Pedas", en: "Spicy" } },
-  { id: "miegor-seafood", name: { id: "Mie Goreng Seafood", en: "Seafood Fried Noodle" }, desc: ngDesc("Mie goreng dengan udang dan cumi segar.", "Fried noodles with fresh shrimp and squid."), price: 52381, image: "/lovable-uploads/1cac38ac-e941-4f2e-afb4-fc8fd127bc23.png", category: "mie-goreng" },
+  { id: "miegor-seafood", name: { id: "Mie Goreng Seafood", en: "Seafood Fried Noodle" }, desc: ngDesc("Mie goreng dengan udang dan cumi segar.", "Fried noodles with fresh shrimp and squid."), price: 52381, image: imgMiegorSeafood, category: "mie-goreng" },
   { id: "mie-capcay", name: { id: "Mie Capcay", en: "Capcay Noodle" }, desc: ngDesc("Mie disiram capcay sayuran segar dan kuah gurih.", "Noodles topped with fresh veggie capcay and savoury broth."), price: 38000, image: "https://nasigoreng69.com/wp-content/uploads/2022/07/mie-cap-cay-1030x687.jpg", category: "mie-goreng" },
   { id: "tammie-capcay", name: { id: "Tammie Capcay", en: "Tammie Capcay" }, desc: ngDesc("Tammie crispy disiram capcay sayuran spesial.", "Crispy tammie topped with special veggie capcay."), price: 37185, image: "https://nasigoreng69.com/wp-content/uploads/2022/07/tamie-cap-cay-1030x687.jpg", category: "mie-goreng" },
   { id: "kwetiau-goreng", name: { id: "Kwetiau Goreng", en: "Fried Kwetiau" }, desc: ngDesc("Kwetiau lebar digoreng dengan bumbu khas.", "Wide rice noodles stir-fried with signature spices."), price: 40000, image: "https://nasigoreng69.com/wp-content/uploads/2022/07/kwetiau-goreng-1030x687.jpg", category: "mie-goreng" },

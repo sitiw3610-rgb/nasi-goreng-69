@@ -168,14 +168,12 @@ export const CartSheet = () => {
             {STEPS.map((s, i) => (
               <div key={s.key} className="flex-1 flex flex-col items-center gap-1">
                 <div
-                  className={`h-1.5 w-full rounded-full transition-colors ${
-                    i <= activeIdx ? "bg-brand" : "bg-border"
-                  }`}
+                  className={`h-1.5 w-full rounded-full transition-colors ${i <= activeIdx ? "bg-brand" : "bg-border"
+                    }`}
                 />
                 <span
-                  className={`text-[10px] uppercase tracking-wider ${
-                    i === activeIdx ? "text-brand font-semibold" : "text-muted-foreground"
-                  }`}
+                  className={`text-[10px] uppercase tracking-wider ${i === activeIdx ? "text-brand font-semibold" : "text-muted-foreground"
+                    }`}
                 >
                   {s.label}
                 </span>
@@ -211,11 +209,10 @@ export const CartSheet = () => {
 
             <button
               onClick={() => setMethod("gofood")}
-              className={`w-full text-left p-5 rounded-2xl border-2 transition-all group ${
-                method === "gofood"
+              className={`w-full text-left p-5 rounded-2xl border-2 transition-all group ${method === "gofood"
                   ? "border-brand bg-brand/5"
                   : "border-border hover:border-brand hover:bg-brand/5"
-              }`}
+                }`}
             >
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 rounded-xl bg-emerald-100 grid place-items-center text-emerald-600">
@@ -445,22 +442,20 @@ export const CartSheet = () => {
                   <button
                     type="button"
                     onClick={() => setPay("cod")}
-                    className={`p-3 rounded-xl border-2 text-sm font-semibold transition ${
-                      pay === "cod"
+                    className={`p-3 rounded-xl border-2 text-sm font-semibold transition ${pay === "cod"
                         ? "border-brand bg-brand/5 text-brand"
                         : "border-border hover:border-brand/50"
-                    }`}
+                      }`}
                   >
                     Cash (COD)
                   </button>
                   <button
                     type="button"
                     onClick={() => setPay("qris")}
-                    className={`p-3 rounded-xl border-2 text-sm font-semibold transition ${
-                      pay === "qris"
+                    className={`p-3 rounded-xl border-2 text-sm font-semibold transition ${pay === "qris"
                         ? "border-brand bg-brand/5 text-brand"
                         : "border-border hover:border-brand/50"
-                    }`}
+                      }`}
                   >
                     QRIS
                   </button>
@@ -611,3 +606,5 @@ const Row = ({ k, v }: { k: string; v: string }) => (
     <span className="text-sm font-medium text-foreground text-right break-all">{v}</span>
   </div>
 );
+
+
